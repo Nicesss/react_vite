@@ -4,6 +4,8 @@ import path from 'node:path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+    // 基础路径
+    base: 'reactApp/',
     plugins: [react()],
     resolve: {
         //配置别名
@@ -18,10 +20,31 @@ export default defineConfig({
         outDir: 'dist',
         //生成静态资源的存放路径
         assetsDir: "assets",
+        //是否禁用最小化混淆，esbuild打包速度最快，terser打包体积最小。
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                //生产环境时移除console
+                drop_console: true,
+                drop_debugger: true,
+            }
+        },
+        rollupOptions: {
+            output: {
+                // manualChunks 配置
+                manualChunks: {
+                    // 将 React 相关库打包成单独的 chunk 中
+                    'react-vendor': ['react', 'react-dom'],
+                    // 将 Lodash 库的代码单独打包
+                    'lodash': ['lodash-es'],
+                    // 将组件库的代码打包
+                    'library': ['antd'],
+                },
+            },
+        }
     },
     //静态资源服务的文件夹
     publicDir: "public",
-    base: './',
     // 对css的行为进行配置
     css: {
         preprocessorOptions: {

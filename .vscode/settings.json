@@ -1,0 +1,20 @@
+{
+    // 在保存文件时自动进行代码格式化。
+    "editor.formatOnSave": true,
+    // 将Prettier作为默认的代码格式化工具。 
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // 禁用对CSS文件的语法验证。 
+    "css.validate": false,
+    // 禁用对LESS文件的语法验证。
+    "less.validate": false,
+    // 禁用对SCSS文件的语法验证。
+    "scss.validate": false,
+    "editor.codeActionsOnSave": {
+        // 在保存文件时自动修复ESLint报告的问题。 
+        "source.fixAll.eslint": true
+    },
+    // 针对JavaScript React文件
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    }
+}

@@ -30,7 +30,9 @@ const router = createBrowserRouter([
         ]
 
     }
-])
+], {
+    basename: "/reactApp",
+})
 
 
 export default router
